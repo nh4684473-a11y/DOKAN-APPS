@@ -1,0 +1,5 @@
+{
+  "name": "Copy of Passport Office Application Generator new",
+  "description": "A web application for generating official applications addressed to the Passport Office in Bengali. Users can fill in their details, preview the letter, and print or save it.",
+  "requestFramePermissions": []
+}
