@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import PassportApp from './components/PassportApp';
 import UndertakingApp from './components/UndertakingApp';
 import ChildPermissionApp from './components/ChildPermissionApp';
+import PhotoApp from './components/PhotoApp';
 import { Logo } from './components/common/Logo';
 
 const App: React.FC = () => {
-  const [currentView, setCurrentView] = useState<'home' | 'passport' | 'undertaking' | 'childPermission'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'passport' | 'undertaking' | 'childPermission' | 'photo'>('home');
 
   if (currentView === 'passport') {
     return <PassportApp onBack={() => setCurrentView('home')} />;
@@ -18,6 +19,10 @@ const App: React.FC = () => {
 
   if (currentView === 'childPermission') {
     return <ChildPermissionApp onBack={() => setCurrentView('home')} />;
+  }
+
+  if (currentView === 'photo') {
+    return <PhotoApp onBack={() => setCurrentView('home')} />;
   }
 
   return (
@@ -115,19 +120,27 @@ const App: React.FC = () => {
                   </div>
               </div>
 
-              {/* AI Passport Photo Maker Card */}
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                  <div className="h-16 w-16 bg-pink-100 dark:bg-pink-900/40 rounded-xl flex items-center justify-center mb-6">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-9 w-9 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {/* AI Passport Photo Maker Card - Now Active */}
+              <div 
+                onClick={() => setCurrentView('photo')}
+                className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer border border-gray-100 dark:border-gray-700 group transform hover:-translate-y-1"
+              >
+                  <div className="h-16 w-16 bg-pink-100 dark:bg-pink-900/40 rounded-xl flex items-center justify-center mb-6 group-hover:bg-pink-600 transition-colors duration-300">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-9 w-9 text-pink-600 dark:text-pink-400 group-hover:text-white transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">এআই পাসপোর্ট ফটো মেকার</h3>
+                  <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">এআই পাসপোর্ট ফটো মেকার</h3>
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    স্বয়ংক্রিয়ভাবে ব্যাকগ্রাউন্ড রিমুভ করে পারফেক্ট পাসপোর্ট সাইজ ছবি তৈরি করুন (শীঘ্রই আসছে)।
+                    স্বয়ংক্রিয়ভাবে ব্যাকগ্রাউন্ড রিমুভ করে পারফেক্ট পাসপোর্ট সাইজ ছবি তৈরি করুন।
                   </p>
-                  <div className="mt-6 inline-block px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs font-bold text-gray-500">আসছে</div>
+                  <div className="mt-6 flex items-center text-pink-600 dark:text-pink-400 font-semibold">
+                      <span>তৈরি করুন</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                  </div>
               </div>
           </div>
       </main>

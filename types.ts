@@ -61,3 +61,23 @@ export interface Template {
 }
 
 export type ApplicationSubmission = ApplicationData & { template: TemplateKey };
+
+// Photo App Types
+export enum AppState {
+  UPLOAD = 'UPLOAD',
+  PREVIEW = 'PREVIEW',
+  RESULT = 'RESULT'
+}
+
+export enum BackgroundColor {
+  WHITE = 'white',
+  LIGHT_BLUE = '#dbeafe', // Tailwind blue-100
+  LIGHT_GRAY = '#f3f4f6', // Tailwind gray-100
+  OFF_WHITE = '#f9fafb'   // Tailwind gray-50
+}
+
+export interface UploadedFile {
+  base64: string;
+  mimeType: string;
+  dataUrl: string;
+}
